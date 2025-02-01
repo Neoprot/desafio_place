@@ -4,22 +4,39 @@ import { Cidade } from "@domain/cidade";
 import { Observable, from } from "rxjs";
 import { environment } from "../app/environments/environment";
 
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class ProjetoService {
   constructor(private http: HttpClient) {}
+  private baseUrl = environment.apiUrl + environment.urlCidades;
 
   //------------------------------------------------
   /** Recupera a lista de cidades */
   //------------------------------------------------
-  pesquisarCidades(): Observable<Cidade[]> {}
+  pesquisarCidades(): Observable<Cidade[]> {
+    return this.http.get<Cidade[]>(this.baseUrl);
+  }
+
+  pesquisarCidadeporId(id: number): Observable<Cidade> {
+    return this.http.get<Cidade>(`${this.baseUrl}/${id}`);
+  }
 
   //------------------------------------------------
   /** Exclui a cidade informada */
   //------------------------------------------------
-  excluir(cidade: Cidade): Observable<any> {}
+  excluir(cidade: Cidade): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${cidade.id}`);
+  }
 
   //------------------------------------------------
   /** Salva a cidade informada */
   //------------------------------------------------
-  salvar(cidade: Cidade): Observable<any> {}
+  salvar(cidade: Cidade): Observable<Cidade> {
+    return this.http.post<Cidade>(this.baseUrl, cidade);
+  }
+
+  atualizarCidade(cidade: Cidade): Observable<Cidade> {
+    return this.http.put<Cidade>(this.baseUrl, cidade);
+  }
 }
