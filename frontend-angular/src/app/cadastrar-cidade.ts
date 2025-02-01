@@ -24,6 +24,7 @@ export class CadastrarCidade {
   // Evento lançado ao fechar a janela
   //-------------------------------------------------------
   @Output("onClose") private eventoFechaJanela = new EventEmitter<boolean>();
+  displayDialog: boolean = true;
 
   //--------------------------------------------------------------
   /** Construtor. */
@@ -61,9 +62,6 @@ export class CadastrarCidade {
     });
   }
 
-  //-------------------------------------------------------------------------------------
-  /** Método chamado ao clicar no botao 'cancelar' */
-  //-------------------------------------------------------------------------------------
   public cancelar(): void {
     this.eventoFechaJanela.emit(false);
   }

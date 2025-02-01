@@ -1,8 +1,9 @@
 <p-dialog
   header="Cadastrar Cidade"
-  [visible]="true"
+  [(visible)]="displayDialog"
   [modal]="true"
   [style]="{ width: '25rem' }"
+  (onHide)="cancelar()"
 >
   <div class="flex align-items-center gap-3 mb-3">
     <label for="nome" class="font-semibold w-6rem">Nome</label>
