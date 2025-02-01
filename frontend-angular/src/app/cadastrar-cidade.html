@@ -9,7 +9,7 @@
     <input
       pInputText
       id="nome"
-      [(ngModel)]="cidade."
+      [(ngModel)]="cidade.nome"
       class="flex-auto"
       autocomplete="off"
     />
@@ -21,7 +21,7 @@
       pInputText
       id="uf"
       class="flex-auto"
-      [(ngModel)]="cidade."
+      [(ngModel)]="cidade.uf"
       autocomplete="off"
     />
   </div>
@@ -32,7 +32,7 @@
     <p-radioButton
       name="capital"
       [value]="true"
-      [(ngModel)]="cidade."
+      [(ngModel)]="cidade.capital"
       inputId="op1"
     />
     <label for="op1" class="ml-2">Sim</label>
@@ -40,7 +40,7 @@
     <p-radioButton
       name="capital"
       [value]="false"
-      [(ngModel)]="cidade."
+      [(ngModel)]="cidade.capital"
       inputId="op2"
     />
     <label for="op2" class="ml-2">Não</label>

@@ -7,26 +7,27 @@
     [value]="listaCidades"
     [paginator]="true"
     [rows]="5"
-    [tableStyle]="{ 'min-width': '50rem' }"
     [rowsPerPageOptions]="[5, 10, 20]"
     styleClass="p-datatable-gridlines"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Code</th>
+        <th>ID</th>
         <th>Nome</th>
         <th>UF</th>
         <th>Capital</th>
+        <th>Comércios</th>
         <th>Ação</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-cidade>
       <tr>
         <td>{{ cidade.id }}</td>
-        <td>{{ cidade. }}</td>
-        <td>{{ cidade. }}</td>
-        <td>{{ cidade. }}</td>
+        <td>{{ cidade.nome }}</td>
+        <td>{{ cidade.uf }}</td>
+        <td>{{ cidade.capital ? 'Sim' : 'Não' }}</td>
+        <td>{{ cidade.nomesComercios }}</td>
         <td style="width: 250px">
           <p-button
             (click)="abreJanelaParaAlterarCidade(cidade)"
@@ -39,11 +40,14 @@
     </ng-template>
   </p-table>
 
-  <p-button (click)="abreJanelaParaCadastrarNovaCidade()" label="Nova Cidade" />
+  <p-button
+    (click)="abreJanelaParaCadastrarNovaCidade()"
+    label="Nova Cidade"
+  ></p-button>
 
   <!-- Janela para cadastro de cidade -->
   <cadastrar-cidade
-    *ngIf="this.mostraJanelaCadastro"
+    *ngIf="mostraJanelaCadastro"
     [cidade]="cidadeSelecionada"
     (onClose)="fechaJanelaCadastro($event)"
   ></cadastrar-cidade>

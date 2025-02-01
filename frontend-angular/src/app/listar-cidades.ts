@@ -49,7 +49,11 @@ export class ListarCidades {
   //-------------------------------------------------------------------------------------
   /** Método chamado para recuperar cidades para a tabela */
   //-------------------------------------------------------------------------------------
-  private pesquisarCidades(): void {}
+  private pesquisarCidades(): void {
+    this.service.pesquisarCidades().subscribe((retorno) => {
+      this.listaCidades = retorno;
+    });
+  }
 
   //-------------------------------------------------------------------------------------
   /** Método chamado ao clicar no botão 'Nova Cidade' */
