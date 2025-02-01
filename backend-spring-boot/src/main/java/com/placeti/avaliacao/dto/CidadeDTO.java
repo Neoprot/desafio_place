@@ -23,7 +23,7 @@ public class CidadeDTO {
     private String nome;
     private String uf;
     private Boolean capital;
-    private List<String> nomesComercios;
+    private String nomesComercios;
     
     
     //-----------------------------------------------
@@ -38,9 +38,9 @@ public class CidadeDTO {
         dto.setNome(cidade.getNome());
         dto.setUf(cidade.getUf());
         dto.setCapital(cidade.getCapital());
-                List<String> nomes = cidade.getComercios().stream()
-                .map(Comercio::getNomeComercio)
-                .collect(Collectors.toList());
+        String nomes = cidade.getComercios().stream()
+                                .map(Comercio::getNomeComercio)
+                                .collect(Collectors.joining(", "));
         dto.setNomesComercios(nomes);
         return dto;
     }
