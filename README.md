@@ -38,7 +38,7 @@
     mvn spring-boot:run
 ```
 
-5. Servidor rodando no `http://localhost:8080`.
+5. Servidor rodando no endereço: `http://localhost:8080`.
 
 ## Frontend (EM PRODUÇÃO)
 
@@ -61,6 +61,8 @@
 ```
     npm start
 ```
+
+5. Acesse o frontend no seguinte endereço: `http://localhost:4200`
 
 ## Após subir o backend o banco H2 pode ser acessado no seguinte endereço:
 
