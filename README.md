@@ -1,6 +1,6 @@
 # Desafio Cidades
 
-## Tecnologias utilizada:
+## Tecnologias utilizadas:
 
 ### Frontend:
 
