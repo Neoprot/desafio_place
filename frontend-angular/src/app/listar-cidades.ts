@@ -4,6 +4,7 @@ import { Cidade } from "@domain/cidade";
 import { ProjetoService } from "@service/projeto-service";
 import { CadastrarCidade } from "./cadastrar-cidade";
 import { MessageService } from "primeng/api";
+import { CadastrarComercioComponent } from "./components/comercio/cadastrar-comercio/cadastrar-comercio.component";
 
 //-------------------------------------------------------------------------------------
 /** Tela para listar cidades */
@@ -12,7 +13,7 @@ import { MessageService } from "primeng/api";
   selector: "listar-cidades",
   templateUrl: "listar-cidades.html",
   standalone: true,
-  imports: [ImportsModule, CadastrarCidade],
+  imports: [ImportsModule, CadastrarCidade, CadastrarComercioComponent],
   providers: [ProjetoService, MessageService],
 })
 export class ListarCidades {
@@ -30,6 +31,7 @@ export class ListarCidades {
   // Flag usada para mostrar/esconder a janela de cadastro
   //-------------------------------------------------------------
   mostraJanelaCadastro: boolean = false;
+  mostraJanelaComercio: boolean = false;
 
   //--------------------------------------------------------------
   /** Construtor. Recebe os services usados pelo componente */
@@ -102,10 +104,21 @@ export class ListarCidades {
   /** Método chamado quando a janela de cadastro é fechada */
   //-------------------------------------------------------------------------------------
   public fechaJanelaCadastro(salvou: boolean): void {
-    // Esconde a janela de cadastro
     this.mostraJanelaCadastro = false;
 
-    // Se salvou, atualiza a lista de cidades
+    if (salvou) {
+      setTimeout(() => this.pesquisarCidades(), 100);
+    }
+  }
+
+  public abreJanelaParaAdicionarComercio(cidade: Cidade): void {
+    this.cidadeSelecionada = { ...cidade };
+    this.mostraJanelaComercio = true;
+    console.log("Cidade selecionada: ", this.cidadeSelecionada);
+  }
+
+  public fechaJanelaComercio(salvou: boolean): void {
+    this.mostraJanelaComercio = false;
     if (salvou) {
       setTimeout(() => this.pesquisarCidades(), 100);
     }

@@ -32,9 +32,18 @@
           <p-button
             (click)="abreJanelaParaAlterarCidade(cidade)"
             label="Alterar"
+            styleClass="mb-2 mr-4 w-5"
           ></p-button>
-          &nbsp;
-          <p-button (click)="excluir(cidade)" label="Excluir"></p-button>
+          <p-button
+            (click)="excluir(cidade)"
+            label="Excluir"
+            styleClass="mb-2 w-5"
+          ></p-button>
+          <p-button
+            (click)="abreJanelaParaAdicionarComercio(cidade)"
+            styleClass="w-11"
+            label="Adicionar Comércio"
+          ></p-button>
         </td>
       </tr>
     </ng-template>
@@ -45,6 +54,11 @@
     label="Nova Cidade"
   ></p-button>
 
+  <app-cadastrar-comercio
+    *ngIf="mostraJanelaComercio"
+    [cidade]="cidadeSelecionada"
+    (onClose)="fechaJanelaComercio($event)"
+  ></app-cadastrar-comercio>
   <!-- Janela para cadastro de cidade -->
   <cadastrar-cidade
     *ngIf="mostraJanelaCadastro"

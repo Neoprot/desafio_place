@@ -1,0 +1,48 @@
+<p-dialog
+  header="Gerenciar Comércio"
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '30rem' }"
+  (onHide)="cancelar()"
+>
+  <div class="p-fluid">
+    <div class="grid">
+      <div class="col-6">
+        <label for="nomeComercio">Nome do Comércio</label>
+        <input
+          id="nomeComercio"
+          type="text"
+          pInputText
+          [(ngModel)]="comercio.nomeComercio"
+        />
+      </div>
+      <div class="col-6">
+        <label for="nomeResponsavel">Nome do Responsável</label>
+        <input
+          id="nomeResponsavel"
+          type="text"
+          pInputText
+          [(ngModel)]="comercio.nomeResponsavel"
+        />
+      </div>
+    </div>
+    <div class="p-field">
+      <label for="tipoComercio">Tipo de Comércio</label>
+      <p-dropdown
+        id="tipoComercio"
+        [options]="tiposComercio"
+        [(ngModel)]="comercio.tipoComercio"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+  </div>
+  <p-footer>
+    <button
+      pButton
+      type="button"
+      label="Cancelar"
+      (click)="cancelar()"
+    ></button>
+    <button pButton type="button" label="Salvar" (click)="salvar()"></button>
+  </p-footer>
+</p-dialog>
