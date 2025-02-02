@@ -1,0 +1,15 @@
+services:
+  backend:
+    build:
+      context: ../backend-spring-boot
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  frontend:
+    build:
+      context: ../frontend-angular
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
