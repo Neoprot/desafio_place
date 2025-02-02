@@ -28,12 +28,16 @@ public class ProjetoService {
 	/** Método que busca uma cidade pelo seu ID */
 	//---------------------------------------------------------
 	    public CidadeDTO pesquisarCidade(Long id) {
-        Optional<Cidade> optCidade = cidadeRepository.findById(id);
+        Optional<Cidade> optCidade = buscarCidade(id);
         if(optCidade.isPresent()){
             return CidadeDTO.toDTO(optCidade.get());
         }
         logger.warn("Cidade com id {} não encontrada", id);
         return null;
+    }
+
+    public Optional<Cidade> buscarCidade(Long id) {
+        return cidadeRepository.findById(id);
     }
 
 	//---------------------------------------------------------

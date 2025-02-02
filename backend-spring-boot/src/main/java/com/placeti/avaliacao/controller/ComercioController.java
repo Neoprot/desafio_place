@@ -1,6 +1,6 @@
 package com.placeti.avaliacao.controller;
 
-import com.placeti.avaliacao.dto.ComercioDTO;
+import com.placeti.avaliacao.dto.CriarComercioDTO;
 import com.placeti.avaliacao.model.Comercio;
 import com.placeti.avaliacao.service.ComercioService;
 
@@ -31,13 +31,13 @@ public class ComercioController {
     }
 
     @PostMapping
-    public ResponseEntity<Comercio> criarComercio(@RequestBody ComercioDTO dto) {
+    public ResponseEntity<Comercio> criarComercio(@RequestBody CriarComercioDTO dto) {
         Comercio salvo = comercioService.salvarComercio(dto);
         return ResponseEntity.ok(salvo);
     }
 
     @PutMapping
-    public ResponseEntity<Comercio> atualizarComercio(@RequestBody ComercioDTO dto) {
+    public ResponseEntity<Comercio> atualizarComercio(@RequestBody CriarComercioDTO dto) {
         if (dto.getId() == null) {
             return ResponseEntity.badRequest().build();
         }

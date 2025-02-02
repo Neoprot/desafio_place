@@ -4,12 +4,21 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.placeti.avaliacao.dto.CriarComercioDTO;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "comercio")
 public class Comercio {
+    
+    public Comercio(CriarComercioDTO dto, Cidade cidade) {
+        this.id = dto.getId();
+        this.nomeComercio = dto.getNomeComercio();
+        this.nomeResponsavel = dto.getNomeResponsavel();
+        this.tipoComercio = dto.getTipoComercio();
+        this.cidade = cidade;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,3 +40,4 @@ public class Comercio {
     @JsonBackReference
     private Cidade cidade;
 }
+
