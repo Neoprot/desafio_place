@@ -10,6 +10,9 @@ server:
 # --------------------------------------------------------
 spring:
   sql.init.mode: always
+  sql:
+    init:
+      encoding: UTF-8
   datasource:
     url: jdbc:h2:mem:database
     driverClassName: org.h2.Driver
@@ -28,6 +31,6 @@ spring:
   # configuracoes da JPA
   # --------------------------------------------------------
   jpa:
-    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
     hibernate.ddl-auto: create-drop
