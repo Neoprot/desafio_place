@@ -4,7 +4,6 @@ import { ComercioService } from "@service/comercio-service";
 import { MessageService } from "primeng/api";
 import { ImportsModule } from "src/app/imports";
 import { TipoComercio } from "@domain/tipo-comercio.enum";
-import { Cidade } from "d:/Projetos/desafio_estagiarios_1_2025/desafio-técnico/frontend-angular/src/domain/cidade";
 
 @Component({
   selector: "app-cadastrar-comercio",
@@ -14,7 +13,7 @@ import { Cidade } from "d:/Projetos/desafio_estagiarios_1_2025/desafio-técnico/
   providers: [ComercioService, MessageService],
 })
 export class CadastrarComercioComponent {
-  @Input() public cidade!: Cidade;
+  @Input() public cidadeId!: number;
   @Input() public comercio: Comercio = new Comercio();
   @Output() onClose: EventEmitter<boolean> = new EventEmitter();
   public displayDialog: boolean = true;
@@ -27,7 +26,7 @@ export class CadastrarComercioComponent {
   ) {}
 
   salvar(): void {
-    this.comercio.cidade = this.cidade;
+    this.comercio.cidadeId = this.cidadeId;
     const request = this.comercioService.criarComercio(this.comercio);
 
     request.subscribe({

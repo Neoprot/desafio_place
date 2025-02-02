@@ -2,7 +2,6 @@
   <p-toast />
   <h2>Lista de Cidades</h2>
 
-  <!-- Tabela que mostra as cidades cadastradas -->
   <p-table
     [value]="listaCidades"
     [paginator]="true"
@@ -56,10 +55,9 @@
 
   <app-cadastrar-comercio
     *ngIf="mostraJanelaComercio"
-    [cidade]="cidadeSelecionada"
+    [cidadeId]="cidadeSelecionada.id"
     (onClose)="fechaJanelaComercio($event)"
   ></app-cadastrar-comercio>
-  <!-- Janela para cadastro de cidade -->
   <cadastrar-cidade
     *ngIf="mostraJanelaCadastro"
     [cidade]="cidadeSelecionada"

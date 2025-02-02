@@ -1,4 +1,3 @@
-import { Cidade } from "./cidade";
 import { TipoComercio } from "./tipo-comercio.enum";
 
 export class Comercio {
@@ -6,5 +5,5 @@ export class Comercio {
   nomeComercio: string;
   nomeResponsavel: string;
   tipoComercio: TipoComercio;
-  cidade: Cidade;
+  cidadeId: number;
 }

@@ -1,8 +1,7 @@
-// src/app/service/comercio.service.ts
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Comercio } from "../domain/comercio";
+import { Comercio } from "@domain/comercio";
 import { environment } from "../app/environments/environment";
 
 @Injectable({
