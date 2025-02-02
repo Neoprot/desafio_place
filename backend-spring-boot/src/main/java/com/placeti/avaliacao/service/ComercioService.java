@@ -1,13 +1,10 @@
 package com.placeti.avaliacao.service;
 
-import com.placeti.avaliacao.dto.CriarComercioDTO;
+import com.placeti.avaliacao.dto.CriaComercioDTO;
 import com.placeti.avaliacao.model.Cidade;
 import com.placeti.avaliacao.model.Comercio;
-import com.placeti.avaliacao.repository.CidadeRepository;
 import com.placeti.avaliacao.repository.ComercioRepository;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +14,13 @@ import java.util.Optional;
 @Service
 public class ComercioService {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
     @Autowired
-    private ProjetoService projetoService;
+    private CidadeService projetoService;
 
     @Autowired
     private ComercioRepository comercioRepository;
 
-    public Comercio salvarComercio(CriarComercioDTO dto) {
+    public Comercio salvarComercio(CriaComercioDTO dto) {
         Cidade cidade = projetoService.buscarCidade(dto.getCidadeId()).orElseThrow(() -> new RuntimeException("Cidade não encontrada"));
         
         Comercio comercio = new Comercio(dto, cidade);
@@ -40,7 +35,7 @@ public class ComercioService {
         return comercioRepository.findAll();
     }
 
-    public Comercio atualizarComercio(CriarComercioDTO dto) {
+    public Comercio atualizarComercio(CriaComercioDTO dto) {
         Cidade cidade = projetoService.buscarCidade(dto.getCidadeId()).orElseThrow(() -> new RuntimeException("Cidade não encontrada"));
         
         Comercio comercio = new Comercio(dto, cidade);

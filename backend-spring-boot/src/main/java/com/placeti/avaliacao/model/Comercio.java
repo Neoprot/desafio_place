@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.placeti.avaliacao.dto.CriarComercioDTO;
+import com.placeti.avaliacao.dto.CriaComercioDTO;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +12,7 @@ import com.placeti.avaliacao.dto.CriarComercioDTO;
 @Table(name = "comercio")
 public class Comercio {
     
-    public Comercio(CriarComercioDTO dto, Cidade cidade) {
+    public Comercio(CriaComercioDTO dto, Cidade cidade) {
         this.id = dto.getId();
         this.nomeComercio = dto.getNomeComercio();
         this.nomeResponsavel = dto.getNomeResponsavel();
