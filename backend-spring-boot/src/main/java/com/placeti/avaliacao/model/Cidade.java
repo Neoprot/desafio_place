@@ -6,12 +6,20 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.placeti.avaliacao.dto.CriaCidadeDTO;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "cidade")
 public class Cidade {
+
+    public Cidade(CriaCidadeDTO dto) {
+        this.id = dto.getId();
+        this.nome = dto.getNome();
+        this.uf = dto.getUf();
+        this.capital = dto.getCapital();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
