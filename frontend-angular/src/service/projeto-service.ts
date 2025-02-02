@@ -11,9 +11,6 @@ export class ProjetoService {
   constructor(private http: HttpClient) {}
   private baseUrl = environment.apiUrl + environment.urlCidades;
 
-  //------------------------------------------------
-  /** Recupera a lista de cidades */
-  //------------------------------------------------
   pesquisarCidades(): Observable<Cidade[]> {
     return this.http.get<Cidade[]>(this.baseUrl);
   }
@@ -22,16 +19,10 @@ export class ProjetoService {
     return this.http.get<Cidade>(`${this.baseUrl}/${id}`);
   }
 
-  //------------------------------------------------
-  /** Exclui a cidade informada */
-  //------------------------------------------------
   excluir(cidade: Cidade): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${cidade.id}`);
   }
 
-  //------------------------------------------------
-  /** Salva a cidade informada */
-  //------------------------------------------------
   salvar(cidade: Cidade): Observable<Cidade> {
     return this.http.post<Cidade>(this.baseUrl, cidade);
   }

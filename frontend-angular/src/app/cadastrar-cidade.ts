@@ -4,9 +4,6 @@ import { Cidade } from "@domain/cidade";
 import { ProjetoService } from "@service/projeto-service";
 import { MessageService } from "primeng/api";
 
-//-------------------------------------------------------------------------------------
-/** Tela para cadastro de cidades */
-//-------------------------------------------------------------------------------------
 @Component({
   selector: "cadastrar-cidade",
   templateUrl: "cadastrar-cidade.html",
@@ -15,28 +12,16 @@ import { MessageService } from "primeng/api";
   providers: [ProjetoService, MessageService],
 })
 export class CadastrarCidade {
-  //-------------------------------------------------------
-  // Parâmetro de entrada para o componente
-  //-------------------------------------------------------
   @Input() public cidade: Cidade = new Cidade();
 
-  //-------------------------------------------------------
-  // Evento lançado ao fechar a janela
-  //-------------------------------------------------------
   @Output("onClose") private eventoFechaJanela = new EventEmitter<boolean>();
   displayDialog: boolean = true;
 
-  //--------------------------------------------------------------
-  /** Construtor. */
-  //--------------------------------------------------------------
   constructor(
     private service: ProjetoService,
     private messageService: MessageService
   ) {}
 
-  //-------------------------------------------------------------------------------------
-  /** Método chamado ao clicar no botao 'salvar' */
-  //-------------------------------------------------------------------------------------
   public salvar(): void {
     this.service.salvar(this.cidade).subscribe({
       next: (result): void => {
