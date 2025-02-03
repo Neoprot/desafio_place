@@ -22,7 +22,7 @@ public class CidadeService {
 	@Autowired
     private CidadeRepository cidadeRepository;
 
-	    public BuscaCidadeDTO pesquisarCidade(Long id) {
+	public BuscaCidadeDTO pesquisarCidade(Long id) {
         Optional<Cidade> optCidade = buscarCidade(id);
         if(optCidade.isPresent()){
             return BuscaCidadeDTO.toDTO(optCidade.get());
@@ -48,8 +48,7 @@ public class CidadeService {
 
     public void alterarCidade(CriaCidadeDTO dto) {
         if(dto.getId() == null || !cidadeRepository.existsById(dto.getId())) {
-            logger.warn("Tentativa de alterar cidade inexistente com id {}", dto.getId());
-            return;
+            throw new IllegalStateException("Tentativa de alterar cidade inexistente com id "+ dto.getId());
         }
         Cidade cidade = new Cidade(dto);
         cidadeRepository.save(cidade);
@@ -65,7 +64,7 @@ public class CidadeService {
 			cidadeRepository.deleteById(idCidade);
 			logger.info("Cidade com id {} excluída", idCidade);
 		} else {
-			logger.warn("Tentativa de excluir cidade inexistente com id {}", idCidade);
+            throw new IllegalStateException("Tentativa de excluir cidade inexistente com id "+ idCidade);
 		}
 	}
 }
