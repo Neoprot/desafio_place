@@ -5,11 +5,13 @@ import java.util.stream.Collectors;
 import com.placeti.avaliacao.model.Cidade;
 import com.placeti.avaliacao.model.Comercio;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CriaCidadeDTO {
     private Long id;
     private String nome;
