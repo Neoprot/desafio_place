@@ -16,6 +16,24 @@
 
 # Como executar
 
+## Utilizando o docker
+
+1. Navegue para a pasta `ambiente`, usando o comando:
+
+```
+cd ambiente/
+```
+
+2. Execute o docker com comanod:
+
+```
+docker compose up --build -d
+```
+
+3. Acesse front no endereço: `http://localhost:4200` e o back no endereço `http://localhost:8080`
+
+## Sem utilizar o docker
+
 ## Backend
 
 1. Instale o [Maven](https://maven.apache.org/download.cgi) ou qualquer outro programa que possa executar o spring boot;
@@ -23,43 +41,43 @@
 2. Navegue para a pasta `backend-spring-boot`, usando o comando:
 
 ```
-    cd backend-spring-boot/
+cd backend-spring-boot/
 ```
 
 3. Baixe as dependecias com o comando:
 
 ```
-    mvn clean install
+mvn clean install
 ```
 
 4. Execute o backend com o comando:
 
 ```
-    mvn spring-boot:run
+mvn spring-boot:run
 ```
 
 5. Servidor rodando no endereço: `http://localhost:8080`.
 
-## Frontend (EM PRODUÇÃO)
+## Frontend
 
 1. tenha o node instalado na sua máquina
 
 2. navegue para a pasta `frontend-angular`, usando o comando:
 
 ```
-    cd frontend-angular
+cd frontend-angular
 ```
 
 3. instale as dependencias com o comando:
 
 ```
-    npm install
+npm install
 ```
 
 4. Execute o frontend, com o comando:
 
 ```
-    npm start
+npm start
 ```
 
 5. Acesse o frontend no seguinte endereço: `http://localhost:4200`
