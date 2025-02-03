@@ -1,5 +1,6 @@
 package com.placeti.avaliacao.controller;
 
+import com.placeti.avaliacao.dto.BuscaComercioDTO;
 import com.placeti.avaliacao.dto.CriaComercioDTO;
 import com.placeti.avaliacao.model.Comercio;
 import com.placeti.avaliacao.service.ComercioService;
@@ -18,30 +19,30 @@ public class ComercioController {
     private ComercioService comercioService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Comercio> buscarComercio(@PathVariable Long id) {
+    public ResponseEntity<BuscaComercioDTO> buscarComercio(@PathVariable Long id) {
         return comercioService.buscarComercio(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<Comercio>> listarComercios() {
-        List<Comercio> lista = comercioService.listarComercios();
+    public ResponseEntity<List<BuscaComercioDTO>> listarComercios() {
+        List<BuscaComercioDTO> lista = comercioService.listarComercios();
         return ResponseEntity.ok(lista);
     }
 
     @PostMapping
-    public ResponseEntity<Comercio> criarComercio(@RequestBody CriaComercioDTO dto) {
-        Comercio salvo = comercioService.salvarComercio(dto);
+    public ResponseEntity<CriaComercioDTO> criarComercio(@RequestBody CriaComercioDTO dto) {
+        CriaComercioDTO salvo = comercioService.salvarComercio(dto);
         return ResponseEntity.ok(salvo);
     }
 
     @PutMapping
-    public ResponseEntity<Comercio> atualizarComercio(@RequestBody CriaComercioDTO dto) {
+    public ResponseEntity<CriaComercioDTO> atualizarComercio(@RequestBody CriaComercioDTO dto) {
         if (dto.getId() == null) {
             return ResponseEntity.badRequest().build();
         }
-        Comercio atualizado = comercioService.atualizarComercio(dto);
+        CriaComercioDTO atualizado = comercioService.atualizarComercio(dto);
         return ResponseEntity.ok(atualizado);
     }
 
