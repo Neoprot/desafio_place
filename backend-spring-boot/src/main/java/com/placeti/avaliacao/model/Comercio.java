@@ -1,6 +1,7 @@
 package com.placeti.avaliacao.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -10,6 +11,7 @@ import com.placeti.avaliacao.dto.CriaComercioDTO;
 @NoArgsConstructor
 @Entity
 @Table(name = "comercio")
+@AllArgsConstructor
 public class Comercio {
     
     public Comercio(CriaComercioDTO dto, Cidade cidade) {
