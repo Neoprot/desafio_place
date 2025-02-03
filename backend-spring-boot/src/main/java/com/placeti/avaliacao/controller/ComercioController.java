@@ -2,7 +2,6 @@ package com.placeti.avaliacao.controller;
 
 import com.placeti.avaliacao.dto.BuscaComercioDTO;
 import com.placeti.avaliacao.dto.CriaComercioDTO;
-import com.placeti.avaliacao.model.Comercio;
 import com.placeti.avaliacao.service.ComercioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
