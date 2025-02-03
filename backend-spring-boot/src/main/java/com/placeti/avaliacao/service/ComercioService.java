@@ -26,11 +26,8 @@ public class ComercioService {
         Cidade cidade = projetoService.buscarCidade(dto.getCidadeId()).orElseThrow(() -> new RuntimeException("Cidade não encontrada"));
         
         Comercio comercioSalvo = comercioRepository.save(new Comercio(dto, cidade));
-        if (comercioSalvo != null) {
-            dto.setId(comercioSalvo.getId());
-            return dto;
-        }
-        return null;
+        dto.setId(comercioSalvo.getId());
+        return dto;
     }
 
     public Optional<BuscaComercioDTO> buscarComercio(Long id) {
@@ -46,18 +43,19 @@ public class ComercioService {
     public CriaComercioDTO atualizarComercio(CriaComercioDTO dto) {
         Cidade cidade = projetoService.buscarCidade(dto.getCidadeId()).orElseThrow(() -> new RuntimeException("Cidade não encontrada"));
         
-        Comercio comercioSalvo = comercioRepository.save(new Comercio(dto, cidade));
-        if (comercioSalvo != null) {
-            dto.setId(comercioSalvo.getId());
-            return dto;
+        comercioRepository.save(new Comercio(dto, cidade));
+        return dto;
+
+    }
+
+    public void deletarComercio(Long idComercio) {
+        if (idComercio == null) {
+            throw new RuntimeException("Id do comercio não pode ser nulo.");
         }
-
-        return null;
+        if(comercioRepository.existsById(idComercio)){
+            comercioRepository.deleteById(idComercio);
+        }else{
+        throw new RuntimeException("Comercio não encontrado");
+        }
     }
-
-    public void deletarComercio(Long id) {
-        comercioRepository.deleteById(id);
-    }
-
-
 }
